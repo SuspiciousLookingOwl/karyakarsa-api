@@ -22,3 +22,12 @@ export interface Donation {
 	userName: string;
 	userEmail: string;
 }
+
+export interface Supporter {
+	id: number;
+	name: string;
+	email: string;
+	lastSupport: string;
+	num_support: number;
+	valueSupport: string;
+}

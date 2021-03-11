@@ -2,7 +2,7 @@ import EventEmitter from "events";
 import Pusher from "pusher-js";
 import toCamel from "camelcase-keys";
 import { AxiosInstance } from "axios";
-import { AlertDonation, Donation } from "./interfaces";
+import { AlertDonation, Donation, Supporter } from "./interfaces";
 import axios from "./axios";
 
 interface ClientEvents {
@@ -57,11 +57,12 @@ class Client extends EventEmitter {
 
 	/** Get supporter history */
 	async getSupportersHistory(page = 1): Promise<Donation[]> {
-		return (
-			await axios.get("creator/supporters-history", {
-				params: { page },
-			})
-		).data.data;
+		return (await axios.get("creator/supporters-history", { params: { page } })).data.data;
+	}
+
+	/** Get list of supporters */
+	async getSupporters(page = 1): Promise<Supporter[]> {
+		return (await axios.get("creator/supporters", { params: { page } })).data.data;
 	}
 
 	/** Start event listener */

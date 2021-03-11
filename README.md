@@ -76,3 +76,20 @@ Get supporters history. Result example:
   }
 ]
 ```
+
+### async getSupporters(page = 1)
+
+Get supporters. Result example:
+
+```js
+[
+  {
+    id: 143568,
+    name: 'Example name',
+    email: 'email@example.com',
+    lastSupport: '2021-03-11 20:26:43',
+    numSupport: 1,
+    valueSupport: '5000'
+  }
+]
+```
