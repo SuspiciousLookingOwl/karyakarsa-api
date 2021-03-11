@@ -2,18 +2,11 @@ import EventEmitter from "events";
 import Pusher from "pusher-js";
 import toCamel from "camelcase-keys";
 import { AxiosInstance } from "axios";
+import { AlertDonation, Donation } from "./interfaces";
 import axios from "./axios";
 
-export interface Donation {
-	id: string;
-	name: string;
-	total: number;
-	notes: string;
-	createdAt: string;
-}
-
 interface ClientEvents {
-	donation: (donation: Donation) => void;
+	donation: (donation: AlertDonation) => void;
 }
 
 declare interface Client {
@@ -60,6 +53,15 @@ class Client extends EventEmitter {
 	/** Get user's balance */
 	async getBalance(): Promise<number> {
 		return (await axios.get("balance")).data;
+	}
+
+	/** Get supporter history */
+	async getSupportersHistory(page = 1): Promise<Donation[]> {
+		return (
+			await axios.get("creator/supporters-history", {
+				params: { page },
+			})
+		).data.data;
 	}
 
 	/** Start event listener */
