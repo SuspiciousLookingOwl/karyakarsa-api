@@ -1,6 +1,6 @@
 {
 	"name": "karyakarsa",
-	"version": "0.0.1-rc.0",
+	"version": "0.0.1-rc.1",
 	"description": "Karyakarsa API Wrapper",
 	"main": "dist/index.js",
 	"scripts": {
